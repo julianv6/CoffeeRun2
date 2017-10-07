@@ -14,7 +14,7 @@
     }
   }
 
-  FormHandler.prototype.addSubmitHandler = function(fn) {
+  FormHandler.prototype.addSubmitHandler = function (fn) {
     console.log('Setting submit handler for form');
     this.$formElement.on('submit', function(event) {
       event.preventDefault(); //submitting form does not take user away from coffeerun page
@@ -31,6 +31,16 @@
     });
   };
 
+  FormHandler.prototype.addInputHandler = function (fn) {
+    console.log('Setting input handler for form');
+    this.$formElement.on('input', '[name="emailAddress"]', function (event) {
+      if(fn(event.target.value)){
+        event.target.setCustomValidity('');
+      }else{
+        event.target.setCustomValidity(event.target.value + ' is not an authorized email address!');
+      }
+    });
+  };
   App.FormHandler = FormHandler;
   window.App = App;
 })(window);
