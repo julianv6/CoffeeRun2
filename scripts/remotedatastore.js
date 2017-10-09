@@ -27,14 +27,14 @@
     var serverUrl = this.serverUrl;
     $.get(serverUrl, function(serverResponse) {
       serverResponse.forEach(function(item) {
-        if (item['emailAddress'] === key){
+        if (item['emailAddress'] === key) {
           $.ajax(serverUrl + item['id'], {
             type: 'DELETE'
-          });//delete
-        }//if
-      });//for Each
-    });//get
-  };//prototype
+          }); //delete
+        } //if
+      }); //for Each
+    }); //get
+  }; //prototype
 
   App.RemoteDataStore = RemoteDataStore;
   window.App = App;

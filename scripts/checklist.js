@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
   'use strict';
 
   var App = window.App || {};
@@ -15,15 +15,15 @@
     }
   }
 
-  CheckList.prototype.addClickHandler = function(fn){
-    this.$element.on('click','input',function(event){
+  CheckList.prototype.addClickHandler = function(fn) {
+    this.$element.on('click', 'input', function(event) {
       var email = event.target.value;
       this.removeRow(email);
       fn(email);
     }.bind(this));
   };
 
-  CheckList.prototype.addRow = function (coffeeOrder) {
+  CheckList.prototype.addRow = function(coffeeOrder) {
     this.removeRow(coffeeOrder.emailAddress);
 
     var rowElement = new Row(coffeeOrder);
@@ -31,7 +31,7 @@
     this.$element.append(rowElement.$element);
   };
 
-  CheckList.prototype.removeRow = function(email){
+  CheckList.prototype.removeRow = function(email) {
     this.$element
       .find('[value="' + email + '"]')
       .closest('[data-coffee-order="checkbox"]')
@@ -39,7 +39,7 @@
   };
 
   function Row(coffeeOrder) {
-    var $div = $('<div></div>', {
+    var $mdiv = $('<div></div>', {
       'data-coffee-order': 'checkbox',
       'class': 'checkbox'
     });
@@ -61,9 +61,9 @@
 
     $label.append($checkbox);
     $label.append(description);
-    $div.append($label);
+    $mdiv.append($label);
 
-    this.$element = $div;
+    this.$element = $mdiv;
   }
 
   App.CheckList = CheckList;
